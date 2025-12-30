@@ -15,7 +15,8 @@ def check_formatting(filepath: str, gold_data: dict) -> bool:
         lines = f.readlines()
     questionable_lines = []
     error_lines = []
-    expected_ids = [v["id"] for v in gold_data]
+    expected_ids = list(gold_data.keys())
+
     line_ids = []
     missing_lines = []
 

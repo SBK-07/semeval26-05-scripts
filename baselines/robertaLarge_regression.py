@@ -31,9 +31,9 @@ PRED_DIR.mkdir(exist_ok=True, parents=True)
 # Configuration
 class Config:
     # Model
-    model_name = "roberta-base"  # Start with base for testing, then switch to large
+    model_name = "roberta-large" # Start with base for testing, then switch to large
     max_length = 256
-    batch_size = 8 if "large" in model_name else 16  # Adjust for model size
+    batch_size =8 if "large" in model_name else 16
     learning_rate = 2e-5
     weight_decay = 0.01
     epochs = 5
@@ -351,7 +351,7 @@ def main():
     dev_predictions = predict(model, dev_dataloader, device)
     
     # Save predictions
-    dev_pred_path = PRED_DIR / "roberta_predictions_dev.jsonl"
+    dev_pred_path = PRED_DIR / "robertaLarge_predictions_dev.jsonl"
     save_predictions(dev_predictions, dev_pred_path)
     print(f"Saved dev predictions to: {dev_pred_path}")
     
@@ -372,16 +372,16 @@ def main():
         
         test_predictions = predict(model, test_dataloader, device)
         
-        test_pred_path = PRED_DIR / "roberta_predictions_test.jsonl"
+        test_pred_path = PRED_DIR / "improved1_roberta_predictions_test.jsonl"
         save_predictions(test_predictions, test_pred_path)
         print(f"Saved test predictions to: {test_pred_path}")
 
 if __name__ == "__main__":
     main()
 
-#Everything looks OK. Evaluating file predictions/roberta_predictions_dev.jsonl on data/dev.json...
+#Everything looks OK. Evaluating file predictions/robertaLarge_predictions_dev.jsonl on data/dev.json...
 #----------
-#Spearman Correlation: 0.32283661578861517
-#Spearman p-Value: 9.935637005417369e-16
+#Spearman Correlation: 0.43866662073213825
+#Spearman p-Value: 4.749723359875079e-29
 #----------
-#Accuracy: 0.5884353741496599 (346/588)
+#Accuracy: 0.70578231292517 (415/588)

@@ -74,3 +74,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+#predictions.jsonl
+#accuracy 56.8
+#Spearman Correlation: 0.10605008409045452
+#Spearman p-Value: 0.010071462232384167
